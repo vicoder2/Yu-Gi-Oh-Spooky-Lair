@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)https://nrgnguyen.neocities.org/horrorcardgenerator -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+     <link rel="shortcut icon" href="https://nrgnguyen.neocities.org/Untitled_design-removebg-preview.png">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yu-Gi-Oh! Horror Card Generator</title>
+    <!-- The style.css file allows you to change the look of your web pages.
+         If you include the next line in all your web pages, they will all share the same look.
+         This makes it easier to make new pages for your site. -->
+    <link href="./Yu-Gi-Oh! Horror Card Generator_files/style.css" rel="stylesheet" type="text/css" media="all">
+  <style>
+  body {
+    background-image: url(tumblr_ms4i9kvzEU1rie4kjo1_500.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+    font-family: monospace, monospace;
+  }
+  
+  #card-image {
+    width: 300px; 
+    height: auto;
+    object-fit: cover; 
+  }
+  
+  .generator-button {
+    border: 2px solid black;
+    background-color: red;
+    font-family: monospace;
+    width: 300px;
+    height: 50px;
+    border-radius: 30px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .generator-button:hover {
+    transform: scale(1.1); /* Scale up the image slightly */
+    opacity: 0.4;
+  }
+  
+  #card-image {
+  animation: glow 1s infinite alternate;
+  }
+
+  @keyframes glow {
+            from {
+                box-shadow: 0 0 30px #CBC3E3;
+            }
+            to {
+                box-shadow: 0 0 60px #CBC3E3;
+            }
+}
+
+.flex-container {
+  background-image: url(tumblr_mnyczpROo61rie4kjo1_640.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.container {
+  text-align: center;
+  position: relative;
+  margin-top: 200px;
+}
+
+@media (max-width: 900px) {
+ body {
+  background-size: 120vw 120vh;
+ }
+ 
+ .flex-container {
+   height: 110px;
+}
+
+.container {
+  margin-top: 150px;
+}
+}
+</style>
+  </head>
+  <body>
+  <div class="flex-container" style="position:fixed;top:0;">
+<img src="./Yu-Gi-Oh! Horror Card Generator_files/Cool-Text-468851516167642.png" width="100%;">
+</div>
+
+ <div class="container">
+<p style="color:white;">Who knows what creature you might end up uncovering...?</p>
+<div class="center" style="text-align:center;">
+    <div id="card-container">
+        <h2 id="card-name" style="color: white;"></h2>
+        <img id="card-image" src="https://nrgnguyen.neocities.org/horrorcardgenerator">
+        <p id="card-type" style="color: white;"></p>
+    </div>
+    <button onclick="generateRandomCard()" class="generator-button"><strong>Conjure a monster!</strong></button>
+     <label style="color:white;"><input type="checkbox" id="muteCheckbox" onclick="toggleMute()">Mute Sounds</label>
+  </div>
+</div>
+
+<script>
+const yugiohCards = [
+  {
+  name: 'Il Blud', 
+  type: 'Zombie', 
+  image: 'ilblud.webp',
+  sound: 'https://files.catbox.moe/arp0cp.mp3',
+},
+  {
+  name: 'Necroface', 
+  type: 'Zombie', 
+  image: '28297833.jpg',
+  sound: 'https://files.catbox.moe/5ejvrx.mp3',
+},
+  {
+  name: 'Gate Deeg', 
+  type: 'Beast', 
+  image: '275px-GateDeeg-MADU-EN-VG-artwork.png',
+  sound: 'https://files.catbox.moe/f3f8rs.mp3',
+},
+  {
+  name: 'The Wicked Worm Beast', 
+  type: 'Beast', 
+  image: 'the_wicked_worm_beast_by_gold3nb3ar_dfsgjkv-pre.jpg',
+  sound: 'https://files.catbox.moe/cxjtc6.mp3',
+},
+  {
+  name: 'The 13th Grave', 
+  type: 'Zombie', 
+  image: 'di3u3y7-3aaae24d-2f83-40e8-ad36-a0de0769e6f0.png',
+  sound: 'https://files.catbox.moe/ehan8a.mp3',
+},
+  {
+  name: 'Gimmick Puppet Egghead', 
+  type: 'Machine', 
+  image: 'what-card-art-do-you-consider-to-be-the-scariest-v0-1tgcvjr964nb1.webp',
+  sound: 'https://files.catbox.moe/0silfs.mp3', 
+},
+  {
+  name: 'Gimmick Puppet Terror Baby', 
+  type: 'Machine', 
+  image: 'dd9a8dl-1fc0861b-c3c3-4ee2-aa6e-bb8fbe4e07b4.png',
+  sound: 'https://files.catbox.moe/xa205t.mp3',
+},
+  {
+  name: 'Outer Entity Nyarla', 
+  type: 'Fiend', 
+  image: 'outer_entity_nyarla__artwork__by_nhociory_dg2hs9h-pre.jpg',
+  sound: 'https://files.catbox.moe/8zox2x.mp3',
+},
+  {
+  name: 'Tongue Twister', 
+  type: 'Fiend', 
+  image: 'TongueTwister-MADU-EN-VG-artwork.png',
+  sound: 'https://files.catbox.moe/bg6tq4.mp3',
+},
+  {
+  name: 'Greed Jar', 
+  type: 'Rock', 
+  image: 'dhyj725-1920b336-24fa-4d6b-b5dc-20caa01e2cc0.png',
+  sound: 'https://files.catbox.moe/ajn3l4.mp3', 
+},
+  {
+  name: 'Rigorous Reaver', 
+  type: 'Plant', 
+  image: 'RigorousReaver-TF04-JP-VG.webp',
+  sound: 'https://files.catbox.moe/vt1v0m.mp3',
+},
+ ];
+ 
+ let currentAudio = null;
+
+      function toggleMute() {
+        if (currentAudio) {
+          currentAudio.muted = document.getElementById("muteCheckbox").checked;
+        }
+      }
+
+      function generateRandomCard() {
+        const randomIndex = Math.floor(Math.random() * yugiohCards.length);
+        const randomCard = yugiohCards[randomIndex];
+        
+        document.getElementById('card-name').innerText = randomCard.name;
+        document.getElementById('card-image').src = randomCard.image;
+        document.getElementById('card-type').innerText = 'Type: ' + randomCard.type;
+
+        if (currentAudio) {
+          currentAudio.pause();
+          currentAudio.currentTime = 0;
+        }
+
+        currentAudio = new Audio(randomCard.sound);
+        currentAudio.muted = document.getElementById("muteCheckbox").checked; // Check mute status
+        currentAudio.play();
+      }
+</script>
+  
+
+</body></html>
