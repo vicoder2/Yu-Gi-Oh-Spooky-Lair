@@ -1,2 +1,2 @@
 # Yu-Gi-Oh! Spooky Lair
-This is a horror-themed website.
+This is a horror-themed website. It features a generator that generates a random Yu-Gi-Oh! horror monster with the click of a button, a gallery compiling a total of 25 Yu-Gi-Oh! horror cards, and a guestbook of horrors hosted on Atabook.com for anyone who wants to leave a last message. In addition, the site also has an audio player that plays the soundtrack "Song of Unhealing" from The Legend of Zelda.
